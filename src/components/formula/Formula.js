@@ -25,4 +25,3 @@ export class Formula extends ExcelComponent {
     console.log('mk')
   }
 }
-

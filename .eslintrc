@@ -17,6 +17,7 @@
     "eol-last": "off",
     "no-multiple-empty-lines": "off",
     "operator-linebreak": "off"
+    // "max-len": "off"
   },
   "extends": ["eslint:recommended", "google"]
 }
