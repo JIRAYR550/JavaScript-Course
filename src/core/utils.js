@@ -14,3 +14,4 @@ export function capitalize(string) {
           .map((_, index) => start + index)
     }
   
+

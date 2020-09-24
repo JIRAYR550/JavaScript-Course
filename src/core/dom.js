@@ -17,12 +17,12 @@ class Dom {
     if (typeof text === 'string') {
       this.$el.textContent = text
       return this
+    }
+    if (this.$el.tagName.toLowerCase() === 'input') {
+      return this.$el.value.trim()
+    }
+    return this.$el.textContent.trim()
   }
-  if (this.$el.tagName.toLowerCase() === 'input') {
-    return this.$el.value.trim()
-  }
-  return this.$el.textContent.trim()
-}
 
   clear() {
     this.html('')
@@ -117,3 +117,4 @@ $.create = (tagName, classes = '') => {
   }
   return $(el)
 }
+
