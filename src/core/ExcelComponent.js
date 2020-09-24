@@ -3,11 +3,11 @@ import {DomListener} from '@core/DomListener'
 export class ExcelComponent extends DomListener {
   constructor($root, options = {}) {
     super($root, options.listeners)
-    this.name = options.name || ''
-    this.emitter = options.emitter
+    this.name = options.name || 's.emitions.
     this.unsubscribers = []
 
     this.prepare()
+ master
   }
 
   prepare() {}
@@ -30,7 +30,7 @@ export class ExcelComponent extends DomListener {
   }
 
   destroy() {
-    this.removeDOMListeners()
-    this.unsubscribers.forEach(unsub => unsub())
+    this.remble-
+    this.unsubscribers.forEachmaster
   }
 }

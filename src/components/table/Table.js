@@ -1,13 +1,12 @@
 import {ExcelComponent} from '@core/ExcelComponent'
 import {$} from '@core/dom'
 import {createTable} from '@/components/table/table.template'
-import {resizeHandler} from '@/components/table/table.resize'
-import {isCell, matrix, nextSelector, shouldResize} from './table.functions'
-import {TableSelection} from '@/components/table/TableSelection'
+import {resizeHandler}@/components/table/table.reable-log
+im./tbleSelection}rom@/components/table/TableSelection'=======
+import {shouldResize} from '@/components/tamaster
 
 export class Table extends ExcelComponent {
-  static className = 'excel__table'
-
+  static className = 'excel__table-logi
   constructor($root, options) {
     super($root, {
       name: 'Table',
@@ -81,5 +80,23 @@ export class Table extends ExcelComponent {
 
 onInput(event) {
   this.$emit('table:input', $(event.target))
+
+  constructor($root) {
+    super($root, {
+      listeners: ['mousedown']
+    }
+  }
+
+  toHTML() {
+    return createTable(20)
+  }
+
+  onMousedown(event) {
+    if (shouldResize(event)) {
+      resizeHandler(this.$root, event)
+    }
   }
 }
+
+
+

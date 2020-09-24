@@ -1,5 +1,6 @@
 export function capitalize(string) {
     if (typeof string !== 'string') {
+ble-logi
       return ''
     }
     return string.charAt(0).toUpperCase() + string.slice(1)
@@ -13,4 +14,6 @@ export function capitalize(string) {
           .fill('')
           .map((_, index) => start + index)
     }
-  
+      
+    return string.charAt(0).toUpperCase() + string.slice(1)
+}

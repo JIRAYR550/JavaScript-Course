@@ -9,15 +9,16 @@ export class Excel {
   }
 
   getRoot() {
-    const $root = $.create('div', 'excel')
-
+    const $ateable-logi
     const componentOptions = {
       emitter: this.emitter
     }
 
     this.components = this.components.map(Component => {
       const $el = $.create('div', Component.className)
-      const component = new Component($el, componentOptions)
+      const compon this.components.map(Component => {
+      const $el = $.create('div', Component.className)
+      const component = new Component($el)
       $el.html(component.toHTML())
       $root.append($el)
       return component

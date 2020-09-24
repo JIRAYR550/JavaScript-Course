@@ -1,3 +1,4 @@
+able-logi
 class Dom {
   constructor(selector) {
     this.$el = typeof selector === 'string'
@@ -7,11 +8,26 @@ class Dom {
 
   html(html) {
     if (typeof html === 'string') {
-      this.$el.innerHTML = html
+      this.$el.innerHTML =
+  class Dom {
+    constructor(selector) {
+      this.$el = typeof selector === 'string' ?
+        document.querySelector(selector) :
+        selector
+    }
+
+    html(html) {
+      if (typeof html === 'string') {
+        this.$el.innerHTML = html
+        return this
+      }
+      return this.$el.outerHTML.trim()
+    }
+
+    clear() master
       return this
     }
-    return this.$el.outerHTML.trim()
-  }
+
 
   text(text) {
     if (typeof text === 'string') {
@@ -28,15 +44,16 @@ class Dom {
     this.html('')
     return this
   }
+    on(eventType, callback) {
+      this.$el.addEventListener(eventType, callback)
+   master
 
-  on(eventType, callback) {
-    this.$el.addEventListener(eventType, callback)
-  }
+    off(eventType, callback) {
+      this.$el.removeEventListener(eventType, callback)
+    }
 
-  off(eventType, callback) {
-    this.$el.removeEventListener(eventType, callback)
-  }
-
+    append(node) {
+      if (node instanceof Dom)able-log
   find(selector) {
     return $(this.$el.querySelector(selector))
   }
@@ -44,13 +61,25 @@ class Dom {
   append(node) {
     if (node instanceof Dom) {
       node = node.$el
+
+      if (Element.prototype.append) {
+        this.$el.append(node)
+      } else {
+        this.$el.appendChild(n master
     }
 
-    if (Element.prototype.append) {
-      this.$el.append(node)
-    } else {
-      this.$el.appendChild(node)
+    get data() {
+      return this.$el.dataset
     }
+
+    closest(selector) {
+      return $(this.$el.closest(selector))
+    }
+
+    getCoords() {
+      return this.$el.getBoundingClientRect()
+    }
+
 
     return this
   }
@@ -103,17 +132,24 @@ class Dom {
   removeClass(className) {
     this.$el.classList.remove(className)
     return this
-  }
-}
+  
 
-export function $(selector) {
-  return new Dom(selector)
-}
+    findAll(selector) {
+      return this.$el.querySelectorAmaster
 
-$.create = (tagName, classes = '') => {
-  const el = document.createElement(tagName)
-  if (classes) {
-    el.classList.add(classes)
+    css(styles = {}) {
+      Object
+        .keys(styles)
+        .forEach(key => {
+          this.$el.style[key] = styles[key]
+        })
+    }
   }
-  return $(el)
-}
+
+  export function $(selector) {
+    return new Dom(se
+
+  $.create = (tagName, classes = '') => {
+    const el = document.createElement(tagName)
+    if (classes) {
+      el.classList. master
