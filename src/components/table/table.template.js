@@ -1,69 +1,87 @@
-const CODES = {
-    A: 65,
-    Z: 90
+import {ExcelComponent} from '@core/ExcelComponent'
+import {$} from '@core/dom'
+import {createTable} from '@/components/table/table.template'
+import {resizeHandler} from '@/components/table/table.resize'
+import {isCell, matrix, nextSelector, shouldResize} from './table.functions'
+import {TableSelection} from '@/components/table/TableSelection'
+
+export class Table extends ExcelComponent {
+  static className = 'excel__table'
+
+  constructor($root, options) {
+    super($root, {
+      name: 'Table',
+      listeners: ['mousedown', 'keydown', 'input'],
+      ...options
+    })
   }
-  
-  function toCell(row) {
-      return function(_, col) {
-          return `
-        <div 
-          class="cell" 
-          contenteditable 
-          data-col="${col}"
-          data-type="cell"
-          data-id="${row}:${col}"
-        ></div>
-      `
+
+  toHTML() {
+    return createTable(20)
+  }
+
+  prepare() {
+    this.selection = new TableSelection()
+  }
+
+  init() {
+    super.init()
+
+    this.selectCell(this.$root.find('[data-id="0:0"]'))
+
+    this.$on('formula:input', text => {
+      this.selection.current.text(text)
+    })
+
+
+    this.$on('formula:done', () => {
+      this.selection.current.focus()
+    })
+  }
+
+  selectCell($cell) {
+    this.selection.select($cell)
+    this.$emit('table:select', $cell)
+  }
+
+  onMousedown(event) {
+    if (shouldResize(event)) {
+      resizeHandler(this.$root, event)
+    } else if (isCell(event)) {
+      const $target = $(event.target)
+      if (event.shiftKey) {
+        const $cells = matrix($target, this.selection.current)
+          .map(id => this.$root.find(`[data-id="${id}"]`))
+        this.selection.selectGroup($cells)
+      } else {
+        this.selection.select($target)
       }
+    }
   }
 
-  function toColumn(col, index) {
-      return `
-      <div class="column" data-type="resizable" data-col="${index}">
-        ${col}
-        <div class="col-resize" data-resize="col"></div>
-      </div>
-    `
+  onKeydown(event) {
+    const keys = [
+      'Enter',
+      'Tab',
+      'ArrowLeft',
+      'ArrowRight',
+      'ArrowDown',
+      'ArrowUp'
+    ]
+
+    const {
+      key
+    } = event
+
+    if (keys.includes(key) && !event.shiftKey) {
+      event.preventDefault()
+      const id = this.selection.current.id(true)
+      const $next = this.$root.find(nextSelector(key, id))
+      this.selectCell($next)
+    }
   }
 
- function createRow(index, content) {
-  const resize = index ? '<div class="row-resize" data-resize="row"></div>' : ''
-      return `
-      <div class="row" data-type="resizable">
-        <div class="row-info">
-          ${index ? index : ''}
-          ${resize}
-        </div>
-        <div class="row-data">${content}</div>
-      </div>
-    `
+  onInput(event) {
+    this.$emit('table:input', $(event.target))
   }
-
-  function toChar(_, index) {
-      return String.fromCharCode(CODES.A + index)
-  }
-
-  export function createTable(rowsCount = 15) {
-      const colsCount = CODES.Z - CODES.A + 1 // Compute cols count
-      const rows = []
-
-      const cols = new Array(colsCount)
-          .fill('')
-          .map(toChar)
-          .map(toColumn)
-          .join('')
-
-      rows.push(createRow(null, cols))
-
-      for (let row = 0; row < rowsCount; row++) {
-          const cells = new Array(colsCount)
-              .fill('')
-              .map(toCell(row))
-              .join('')
-
-          rows.push(createRow(row + 1, cells))
-      }
-
-      return rows.join('')
-  }
-  
+}
