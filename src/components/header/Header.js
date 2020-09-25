@@ -7,11 +7,11 @@ export class Header extends ExcelComponent {
     super($root, {
       name: 'Header',
       ...options,
-    }) 
+    })
   }
 
-    toHTML() {
-       return `
+  toHTML() {
+    return `
          <input type="text" class="input" value="Новая таблица" />
        <div>
          
@@ -25,5 +25,5 @@ export class Header extends ExcelComponent {
        
        </div>
      `
-    }
   }
+}

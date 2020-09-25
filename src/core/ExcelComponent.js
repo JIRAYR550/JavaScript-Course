@@ -11,7 +11,7 @@ export class ExcelComponent extends DomListener {
   }
 
   prepare() {}
-  
+
   toHTML() {
     return ''
   }

@@ -48,18 +48,18 @@ export function createTable(rowsCount = 15) {
   const rows = []
 
   const cols = new Array(colsCount)
-      .fill('')
-      .map(toChar)
-      .map(toColumn)
-      .join('')
+    .fill('')
+    .map(toChar)
+    .map(toColumn)
+    .join('')
 
   rows.push(createRow(null, cols))
 
   for (let row = 0; row < rowsCount; row++) {
     const cells = new Array(colsCount)
-        .fill('')
-        .map(toCell(row))
-        .join('')
+      .fill('')
+      .map(toCell(row))
+      .join('')
 
     rows.push(createRow(row + 1, cells))
   }

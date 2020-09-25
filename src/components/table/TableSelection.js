@@ -22,7 +22,7 @@ export class TableSelection {
   selectGroup($group = []) {
     this.clear()
 
-     this.group = $group
-     this.group.forEach($el => $el.addClass(TableSelection.className))
+    this.group = $group
+    this.group.forEach($el => $el.addClass(TableSelection.className))
   }
 }
