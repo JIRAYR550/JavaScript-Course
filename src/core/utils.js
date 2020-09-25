@@ -1,28 +1,16 @@
-export class TableSelection {
-  static className = 'selected'
-
-  constructor() {
-    this.group = []
-    this.current = null
+export function capitalize(string) {
+    if (typeof string !== 'string') {
+      return ''
+    }
+    return string.charAt(0).toUpperCase() + string.slice(1)
   }
-
-  select($el) {
-    this.clear()
-    $el.focus().addClass(TableSelection.className)
-    this.group.push($el)
-    this.current = $el
+  
+  export function range(start, end) {
+    if (start > end) {
+      [end, start] = [start, end]
+    }
+    return new Array(end - start + 1)
+        .fill('')
+        .map((_, index) => start + index)
   }
-
-
-  clear() {
-    this.group.forEach($el => $el.removeClass(TableSelection.className))
-    this.group = []
-  }
-
-  selectGroup($group = []) {
-    this.clear()
-
-    this.group = $group
-    this.group.forEach($el => $el.addClass(TableSelection.className))
-  }
-}
+  
