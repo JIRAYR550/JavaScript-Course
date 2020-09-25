@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {range} from '@core/utils'
 
 export function shouldResize(event) {
@@ -21,10 +20,7 @@ export function matrix($target, $current) {
   }, [])
 }
 
-export function nextSelector(key, {
-  col,
-  row
-}) {
+export function nextSelector(key, {col, row}) {
   const MIN_VALUE = 0
   switch (key) {
     case 'Enter':
@@ -45,6 +41,3 @@ export function nextSelector(key, {
 
   return `[data-id="${row}:${col}"]`
 }
-  
-=======
->>>>>>> 45cc32e212f2d3c6c9a9c41b7de6ed9751454e7e
