@@ -1,5 +1,4 @@
-  
-const CODES = {
+  const CODES = {
     A: 65,
     Z: 90
   }
@@ -59,7 +58,6 @@ const CODES = {
     for (let row = 0; row < rowsCount; row++) {
       const cells = new Array(colsCount)
           .fill('')
-          // .map((_, col) => toCell(row, col))
           .map(toCell(row))
           .join('')
   
