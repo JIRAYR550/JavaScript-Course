@@ -1,13 +1,7 @@
-const CODES = {
+  const CODES = {
     A: 65,
     Z: 90
   }
-  
-  // function toCell(row, col) {
-  //   return `
-  //     <div class="cell" contenteditable data-col="${col}"></div>
-  //   `
-  // }
   
   function toCell(row) {
     return function(_, col) {
@@ -64,7 +58,6 @@ const CODES = {
     for (let row = 0; row < rowsCount; row++) {
       const cells = new Array(colsCount)
           .fill('')
-          // .map((_, col) => toCell(row, col))
           .map(toCell(row))
           .join('')
   
@@ -73,4 +66,3 @@ const CODES = {
   
     return rows.join('')
   }
-  

@@ -33,6 +33,7 @@ export class Table extends ExcelComponent {
       this.selection.current.text(text)
     })
 
+
     this.$on('formula:done', () => {
       this.selection.current.focus()
     })
@@ -50,7 +51,7 @@ export class Table extends ExcelComponent {
       const $target = $(event.target)
       if (event.shiftKey) {
         const $cells = matrix($target, this.selection.current)
-            .map(id => this.$root.find(`[data-id="${id}"]`))
+          .map(id => this.$root.find(`[data-id="${id}"]`))
         this.selection.selectGroup($cells)
       } else {
         this.selection.select($target)
@@ -68,7 +69,9 @@ export class Table extends ExcelComponent {
       'ArrowUp'
     ]
 
-    const {key} = event
+    const {
+      key
+    } = event
 
     if (keys.includes(key) && !event.shiftKey) {
       event.preventDefault()
@@ -82,3 +85,4 @@ export class Table extends ExcelComponent {
     this.$emit('table:input', $(event.target))
   }
 }
+  

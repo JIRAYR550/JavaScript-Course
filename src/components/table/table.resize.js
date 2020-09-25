@@ -1,4 +1,3 @@
-
 import {$} from '@core/dom'
 
 export function resizeHandler($root, event) {
