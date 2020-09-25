@@ -17,13 +17,6 @@ function toCell(row) {
   }
 }
 
-
-// function toCell(_, col) {
-//   return `
-//     <div class="cell" contenteditable data-col="${col}"></div>
-//   `
-// }
-
 function toColumn(col, index) {
   return `
     <div class="column" data-type="resizable" data-col="${index}">
@@ -40,18 +33,18 @@ function createRow(index, content) {
       <div class="row-info">
         ${index ? index : ''}
         ${resize}
-        </div>
-        <div class="row-data">${content}</div>
-     </div>
+      </div>
+      <div class="row-data">${content}</div>
+    </div>
   `
 }
 
 function toChar(_, index) {
-    return String.fromCharCode(CODES.A + index)
+  return String.fromCharCode(CODES.A + index)
 }
 
 export function createTable(rowsCount = 15) {
-  const colsCount = CODES.Z - CODES.A + 1 
+  const colsCount = CODES.Z - CODES.A + 1 // Compute cols count
   const rows = []
 
   const cols = new Array(colsCount)

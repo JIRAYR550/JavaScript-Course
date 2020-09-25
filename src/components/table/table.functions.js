@@ -42,5 +42,5 @@ export function nextSelector(key, {col, row}) {
   return `[data-id="${row}:${col}"]`
 }
 
-
+  
 
