@@ -1,4 +1,3 @@
-
 import {range} from '@core/utils'
 
 export function shouldResize(event) {
@@ -41,10 +40,5 @@ export function nextSelector(key, {col, row}) {
   }
 
   return `[data-id="${row}:${col}"]`
-}
-
-
-export function shouldResize(event) {
-  return event.target.dataset.resize
 }
   
