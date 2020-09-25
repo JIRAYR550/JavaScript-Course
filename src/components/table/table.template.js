@@ -1,8 +1,5 @@
-const CODES = {
-  A: 65,
-  Z: 90
-}
 
+<<<<<<< HEAD
 function toCell(row) {
   return function(_, col) {
     return `
@@ -66,3 +63,5 @@ export function createTable(rowsCount = 15) {
 
   return rows.join('')
 }
+=======
+>>>>>>> 45cc32e212f2d3c6c9a9c41b7de6ed9751454e7e

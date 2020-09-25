@@ -1,5 +1,5 @@
-import {$} from '@core/dom'
 
+<<<<<<< HEAD
 export function resizeHandler($root, event) {
   const $resizer = $(event.target)
   const $parent = $resizer.closest('[data-type="resizable"]')
@@ -52,3 +52,5 @@ export function resizeHandler($root, event) {
       })
     }
   }
+=======
+>>>>>>> 45cc32e212f2d3c6c9a9c41b7de6ed9751454e7e
