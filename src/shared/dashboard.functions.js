@@ -44,10 +44,3 @@ export function createRecordsTable() {
     </ul>
   `
 }
-
-
-
-
-
-
-
